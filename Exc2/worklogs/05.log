@@ -1,0 +1,9 @@
+NAMESPACE     NAME                               READY   STATUS    RESTARTS        AGE
+kube-system   coredns-6f6b679f8f-sh7k4           1/1     Running   4 (4m34s ago)   2d15h
+kube-system   etcd-minikube                      1/1     Running   2 (4m39s ago)   2d15h
+kube-system   kube-apiserver-minikube            1/1     Running   2 (4m29s ago)   2d15h
+kube-system   kube-controller-manager-minikube   1/1     Running   4 (4m39s ago)   2d15h
+kube-system   kube-proxy-9ncl5                   1/1     Running   4 (4m39s ago)   2d15h
+kube-system   kube-scheduler-minikube            1/1     Running   4 (4m39s ago)   2d15h
+kube-system   metrics-server-84c5f94fbc-scwth    1/1     Running   0               4m18s
+kube-system   storage-provisioner                1/1     Running   6 (4m39s ago)   2d15h

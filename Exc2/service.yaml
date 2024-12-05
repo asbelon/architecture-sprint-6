@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: testapp-service
+spec:
+  selector:
+    pod: testapp-container
+  ports:
+  - protocol: TCP
+    port: 8080
+    # targetPort: 8001
+  type: NodePort
+#  type: ClusterIP
+  # type: NodePort

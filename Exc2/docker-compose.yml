@@ -1,0 +1,6 @@
+services:
+  backend:
+    image: shestera/scaletestapp
+    container_name: sprint6app
+    ports:
+      - "8080:8080"

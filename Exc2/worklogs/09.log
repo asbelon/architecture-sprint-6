@@ -1,0 +1,2 @@
+NAME          REFERENCE            TARGETS          MINPODS   MAXPODS   REPLICAS   AGE
+testapp-hpa   Deployment/testapp   memory: 3%/80%   1         10        1          119s
