@@ -85,3 +85,9 @@ kubectl get hpa
 ```
 
 [log](./worklogs/09.log)
+
+```bash
+locust --host http://172.27.73.254:30951
+```
+
+![](hpa-log-screenshot.png)
