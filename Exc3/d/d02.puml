@@ -1,0 +1,28 @@
+@startuml
+
+title Диаграмма 2. Успешное получение данных о доступных продуктах (1 раз в сутки ночью)
+
+participant "ins-comp-settlement" as InsCompsettlement
+participant "ins-product-aggregator" as InsProductAggregator
+collections "api-insurance-company" as ApiInsuranceCompany
+
+autonumber
+
+InsCompsettlement -> InsProductAggregator: запрос о доступных продуктах
+activate InsCompsettlement
+rnote over InsCompsettlement : ожидание ответа
+
+activate InsProductAggregator
+
+loop по 5 страховым комания
+    InsProductAggregator -> ApiInsuranceCompany: запрос о продуктах
+    rnote over InsProductAggregator : ожидание ответа
+    InsProductAggregator <-- ApiInsuranceCompany: успешный ответ на запрос о продуктах
+end
+InsProductAggregator -> InsProductAggregator: агрегация данных
+InsCompsettlement <-- InsProductAggregator: успешный ответ на запрос о доступных продуктах
+deactivate InsProductAggregator
+deactivate InsCompsettlement
+
+
+@enduml
