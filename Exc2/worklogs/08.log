@@ -1,0 +1,2 @@
+W1205 20:23:11.145536    1756 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Alexander\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+http://172.27.73.254:30951

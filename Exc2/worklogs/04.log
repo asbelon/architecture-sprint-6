@@ -1,0 +1,5 @@
+W1205 10:28:11.223905   17168 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Alexander\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+* metrics-server is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+  - Используется образ registry.k8s.io/metrics-server/metrics-server:v0.7.2
+* The 'metrics-server' addon is enabled

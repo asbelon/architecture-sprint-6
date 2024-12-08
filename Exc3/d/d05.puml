@@ -1,0 +1,38 @@
+@startuml
+
+title Диаграмма 5. Конфликт одновременного запроса core-app и ins-comp-settlement
+
+participant "core-app" as CoreApp
+participant "ins-comp-settlement" as InsCompsettlement
+participant "ins-product-aggregator" as InsProductAggregator
+collections "api-insurance-company" as ApiInsuranceCompany
+
+autonumber
+
+CoreApp -> InsProductAggregator: запрос о доступных продуктах
+activate CoreApp
+rnote over CoreApp : ожидание ответа
+
+activate InsProductAggregator
+
+loop по 5 страховым комания
+    InsProductAggregator -> ApiInsuranceCompany: запрос о продуктах
+    rnote over InsProductAggregator : ожидание ответа
+    InsProductAggregator <-- ApiInsuranceCompany: успешный ответ на запрос о продуктах
+    InsCompsettlement -> InsProductAggregator: запрос о доступных продуктах
+    activate InsCompsettlement
+    loop по 5 страховым комания
+        InsProductAggregator -> ApiInsuranceCompany: запрос о продуктах
+        rnote over InsProductAggregator : ожидание ответа
+        InsProductAggregator <-- ApiInsuranceCompany: успешный ответ на запрос о продуктах
+        InsProductAggregator -> InsProductAggregator: агрегация данных
+       destroy InsProductAggregator
+       rnote over InsProductAggregator: конфликт
+       rnote over CoreApp : таймаут
+       rnote over InsCompsettlement : таймаут
+       destroy InsCompsettlement
+       destroy CoreApp
+    end
+end
+
+@enduml

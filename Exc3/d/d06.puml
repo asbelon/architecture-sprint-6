@@ -1,0 +1,29 @@
+@startuml
+
+title Диаграмма 6. Взаимодейтсвие по характеру "публикация-подписка"
+
+participant "api-insurance-company" as ApiInsuranceCompany
+participant "ins-product-aggregator" as InsProductAggregator
+database "product-aggregator-db" as ProductAggregatorDb
+queue "Kafka" as Brocker
+participant "core-app" as CoreApp
+
+autonumber
+
+loop регулярно
+
+    InsProductAggregator -> ApiInsuranceCompany: запрос о продуктах/тарифах
+    InsProductAggregator <-- ApiInsuranceCompany: ответ на запрос о продуктах/тарифах
+    InsProductAggregator -> InsProductAggregator: сравнение и генерация событий
+
+    loop по каждому событию
+        group транзакция (Transactional outbox)
+            InsProductAggregator -> ProductAggregatorDb: Запись о новом продукте/тарифе и об изменении продукта/тарифа
+            InsProductAggregator -> Brocker: Сообщение о новом продукте/тарифе и об изменении продукта/тарифа
+        end
+        Brocker -> CoreApp: Получение информации о новом продукте/тарифе и об изменении продукта/тарифа
+    end
+
+end
+
+@enduml

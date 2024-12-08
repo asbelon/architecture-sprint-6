@@ -1,0 +1,14 @@
+W1205 10:26:02.945234   13016 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Alexander\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+* minikube v1.34.0 на Microsoft Windows 11 Pro 10.0.22631.3593 Build 22631.3593
+* Используется драйвер hyperv на основе существующего профиля
+* Starting "minikube" primary control-plane node in "minikube" cluster
+* Обновляется работающий hyperv "minikube" VM ...
+! Failing to connect to https://registry.k8s.io/ from inside the minikube VM
+* To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
+* Подготавливается Kubernetes v1.31.0 на Docker 27.2.0 ...
+* Configuring bridge CNI (Container Networking Interface) ...
+* Компоненты Kubernetes проверяются ...
+  - Используется образ gcr.io/k8s-minikube/storage-provisioner:v5
+  - Используется образ registry.k8s.io/metrics-server/metrics-server:v0.7.2
+* Включенные дополнения: storage-provisioner, metrics-server, default-storageclass
+* Готово! kubectl настроен для использования кластера "minikube" и "default" пространства имён по умолчанию

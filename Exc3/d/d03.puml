@@ -1,0 +1,29 @@
+@startuml
+
+title Диаграмма 3. Неуспешное получение данных о доступных продуктах (каждые 15 мин)
+
+participant "core-app" as CoreApp
+participant "ins-product-aggregator" as InsProductAggregator
+collections "api-insurance-company" as ApiInsuranceCompany
+
+autonumber
+
+CoreApp -> InsProductAggregator: запрос о доступных продуктах
+activate CoreApp
+rnote over CoreApp : ожидание ответа
+
+activate InsProductAggregator
+
+loop по 5 страховым комания
+    InsProductAggregator -> ApiInsuranceCompany: запрос о продуктах
+    rnote over InsProductAggregator : ожидание ответа
+    alt успех
+    else неуспех
+        InsProductAggregator <-- ApiInsuranceCompany: неуспешный ответ на запрос о продуктах
+        CoreApp <-- InsProductAggregator: неуспешный ответ на запрос о доступных продуктах
+        destroy InsProductAggregator
+        deactivate CoreApp
+    end
+end
+
+@enduml
